@@ -169,6 +169,14 @@ const MyCalendar = ({ user }) => {
     handleOpenDialog();
   };
 
+    if (!user) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+        <Typography variant="h6">Please sign in to access your calendar.</Typography>
+      </Box>
+    );
+  }
+  
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
