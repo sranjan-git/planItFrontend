@@ -1,13 +1,12 @@
-// new
 import React, { useContext } from "react";
 import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 import { signInWithGoogle, signOutUser } from "../firebase";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/ct";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const {user, setUser} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const handleGoogleSignIn = async () => {
     try {
@@ -21,14 +20,14 @@ const NavBar = () => {
   const handleSignOut = async () => {
     try {
       await signOutUser();
-      setUser(null);
+      setUser(null); // Clear user context
     } catch (error) {
       console.error("Error signing out", error);
     }
   };
 
   const handleHomeClick = () => {
-    navigate("/"); 
+    navigate("/");
   };
 
   return (
@@ -36,8 +35,8 @@ const NavBar = () => {
       <Toolbar>
         <Typography
           variant="h6"
-          sx={{ flexGrow: 1, cursor: "pointer" }} 
-          onClick={handleHomeClick} 
+          sx={{ flexGrow: 1, cursor: "pointer" }}
+          onClick={handleHomeClick}
         >
           PlanIt.
         </Typography>
@@ -45,7 +44,7 @@ const NavBar = () => {
         {user ? (
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Typography variant="body1" sx={{ marginRight: "20px" }}>
-              Welcome, {user.displayName}
+              Welcome, {user.displayName}!
             </Typography>
             <Button color="inherit" onClick={handleSignOut}>
               Sign Out
@@ -74,6 +73,7 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
 
 
 
