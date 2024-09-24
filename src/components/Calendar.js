@@ -94,7 +94,7 @@ const MyCalendar = () => {
   const fetchEvents = useCallback(async () => {
     if (!user) return; // Early return if no user is available
     try {
-      const response = await axios.post("http://localhost:5005/api/readevent", {
+      const response = await axios.post("https://planit-2t59.onrender.com/api/readevent", {
         email: user.email,
       });
       setEvents(response.data);
@@ -142,7 +142,7 @@ const MyCalendar = () => {
     };
 
     if (currentEvent) {
-      await axios.post("http://localhost:5005/api/updateevent", {
+      await axios.post("https://planit-2t59.onrender.com/api/updateevent", {
         oldtitle: currentEvent.title,
         oldemail: user.email,
         newtitle: newEventData.title,
@@ -151,14 +151,14 @@ const MyCalendar = () => {
         end: newEventData.end,
       });
     } else {
-      await axios.post("http://localhost:5005/api/addevent", newEventData);
+      await axios.post("https://planit-2t59.onrender.com/api/addevent", newEventData);
     }
     fetchEvents();
     handleCloseDialog();
   };
 
   const handleDeleteEvent = async (event) => {
-    await axios.post("http://localhost:5005/api/deleteevent", {
+    await axios.post("https://planit-2t59.onrender.com/api/deleteevent", {
       title: event.title,
       email: user.email,
     });
