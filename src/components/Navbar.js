@@ -35,7 +35,7 @@ const NavBar = () => {
       <Toolbar>
         <Typography
           variant="h6"
-          sx={{ flexGrow: 1, cursor: "pointer" }}
+          sx={{ flexGrow: 1, cursor: "pointer", fontWeight: 'bold' }}
           onClick={handleHomeClick}
         >
           PlanIt.
